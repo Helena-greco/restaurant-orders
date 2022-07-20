@@ -7,7 +7,10 @@ def analyze_log(path_to_file):
 
     try:
         with open(path_to_file, encoding='utf-8') as csv_file:
-            file_reader = csv.reader(path_to_file, delimiter=",", quotechar='"')
+            file = csv.reader(csv_file, delimiter=",", quotechar='"')
+            header, *data = file
+
+        print(data)
 
     except FileNotFoundError:
         raise FileNotFoundError(f"Arquivo inexistente: '{path_to_file}'")
