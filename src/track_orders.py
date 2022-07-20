@@ -26,8 +26,17 @@ class TrackOrders:
 
         return max(most_ordered, key=most_ordered.get)
 
+# Ref: https://www.geeksforgeeks.org/python-set-difference/
     def get_never_ordered_per_customer(self, customer):
-        pass
+        order_list = set()
+        order_by_customer = set()
+
+        for order in self.data:
+            order_list.add(order["order"])
+            if order["customer"] == customer:
+                order_by_customer.add(order["order"])
+
+        return order_list.difference(order_by_customer)
 
     def get_days_never_visited_per_customer(self, customer):
         pass
