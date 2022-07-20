@@ -50,7 +50,15 @@ class TrackOrders:
         return day_list.difference(day_by_customer)
 
     def get_busiest_day(self):
-        pass
+        busiest_day = dict()
+
+        for day in self.data:
+            if day["day"] not in busiest_day:
+                busiest_day[day["day"]] = 1
+            else:
+                busiest_day[day["day"]] += 1
+
+        return max(busiest_day, key=busiest_day.get)
 
     def get_least_busy_day(self):
         pass
